@@ -1,0 +1,11 @@
+.clevertags_tag{background: #eff2f8; padding: 5px 23px 5px 5px; float: left; margin: 0 0 5px 5px; font-size: 12px; color: #285c74; line-height: 12px;position: relative; -moz-border-radius: 3px; border-radius:5px; cursor: pointer; }
+.clevertags_tag a{display: block;width: 22px; height: 22px; background: url(../images/uberselect_x.gif) no-repeat 50% 8px; text-indent: -999em; position: absolute; top:0; right: 0;}
+
+.clevertags_tag:hover, .clevertags_selected{background: #ffd7d7; color: #c00;}
+.clevertags_tag:hover a, .clevertags_selected a{background-position: 50% -35px}
+
+.clevertags_dummyinput{border: none; padding: 0 0 0 5px;}
+
+.clevertags_autocomplete_wrap{position:absolute; padding: 0; margin: 20px 0 0; z-index: 1000; background: #fff; border: 1px solid #808080; width: 120px;}
+.clevertags_autocomplete_wrap a{color: #777; font-size: 11px; padding: 5px 5px 5px 8px; display: block;}
+.clevertags_autocomplete_selected a, .clevertags_autocomplete_tag a:hover{background: #eee url(../../../vendor/images.sw/arrows/right/5/808080.gif) no-repeat -1px 5px; color: #000;}
