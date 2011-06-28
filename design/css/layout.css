@@ -27,7 +27,7 @@ body, input, textarea{font-family: "Courier New", Courier, sans-serif; }
 .fuckyeah img{width: 100%;}
 
 
-.blat{position: absolute; top:50%; left: 50%;width: 608px; height: 608px; margin: -320px 0 0 -400px; background: url(../images/blat_backer.png) no-repeat 0 0}
+.blat{position: absolute; top:0; right: 0;width: 608px; height: 608px; margin: -100px -160px 0 0; background: url(../images/blat_backer.png) no-repeat 0 0}
 
 .blat object,
 .blat .download{position: absolute; top:210px; left: 196px; width: 220px; height: 220px;}
@@ -49,7 +49,7 @@ body, input, textarea{font-family: "Courier New", Courier, sans-serif; }
 
 .antisocial{position: absolute; bottom: 0; right: 0; background: url(../images/bottom_right.png); width: 341px; height: 145px;}
 
-.aboot{position: absolute; top: 0; left: 0; background: #000;width: 100%;}
+.aboot{position: absolute; top: 0; left: 0; background: #000;width: 100%; min-width: 400px}
 .aboot p{ padding: 10px 10px 10px 20px; font-size: 11px;  color: #999; line-height: 11px;}
 .aboot a{color: #ccc;}
 .aboot .dood{color: #fff;}

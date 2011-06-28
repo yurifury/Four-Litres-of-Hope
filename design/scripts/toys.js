@@ -13,9 +13,10 @@ $(function(){
 	
 	function touchthis(){
 	
+		$('.js_mover').css('width', '0');
 		$('.js_mover').animate({
 		  width: '100%'
-		}, 20000, function() {
+		}, 5000, function() {
 			i++
 			if (images.length == i){i=0;}
 				
