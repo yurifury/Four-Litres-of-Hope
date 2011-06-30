@@ -9,7 +9,8 @@ body{z-index: 100; overflow: hidden;}
 .fuckyeah{z-index: 200}
 
 .antisocial{z-index: 300}
-.blat{z-index: 400}
+.blat,
+.miniblat{z-index: 400}
 .aboot{z-index: 550;}
 
 .mover{z-index: 888;}
@@ -49,11 +50,34 @@ body, input, textarea{font-family: "Courier New", Courier, sans-serif; }
 
 .antisocial{position: absolute; bottom: 0; right: 0; background: url(../images/bottom_right.png); width: 341px; height: 145px;}
 
-.aboot{position: absolute; top: 0; left: 0; background: #000;width: 100%; min-width: 400px}
-.aboot p{ padding: 10px 10px 10px 20px; font-size: 11px;  color: #999; line-height: 11px;}
+
+
+
+.aboot{position: absolute; top: 0; left: 0; background: #000; width: 100%;}
+.aboot p{ padding: 8px; font-size: 11px;  color: #999; line-height: 14px;}
 .aboot a{color: #ccc;}
 .aboot .dood{color: #fff;}
 
+.aboot object{float: right; width: 50%}
+
+.aboot form{background: #000 url(../images/floh-top-left.jpg) no-repeat 0 0;  position: absolute; top:100%; left: 0; width: 230px; height: 71px; border: 20px solid #000; border-top-width: 5px; border-bottom-width: 15px;}
+
+.aboot .download a{text-decoration: underline; color: #ff0; font-weight: bold;}
+.aboot .download a:hover{text-decoration: none; color: #fff;}
+.aboot .download strong{font-weight: bold;}
+
+.aboot .wtf{font-size: 9px;display: block; position: absolute; top:60px; left: 0; color: #ccc; width: 100px}
+.aboot .wtf:hover{color: #ff0;}
+.aboot .wtf span{display: none;}
+.aboot .wtf:hover span{display: block; position: absolute; top:100%; left: 0; margin: 10px 0 0; border: 1px solid #ff0; background: #000; padding: 10px; color: #fff; font-size: 11px; width: 240px; line-height: 18px;}
+
+.aboot .text{border: 1px solid #2a2a2a; background: #2a2a2a; font-size: 20px; line-height: 20px; color: #0f0; padding: 0; position: absolute; left:112px; top: 41px; width: 80px}
+.aboot .submit{width:25px; height: 25px; background: url(../images/download.png) no-repeat center; position: absolute; top:41px; left: 195px; opacity: 0.5; cursor: pointer; border: none}
+.aboot .submit:hover{opacity: 1;}
+
+.aboot .playa{position: absolute; top:100%; left: 260px; border: 10px solid #000; right: 0; background: #000; border-top: 0;}
+.aboot object{width: 100%;}
 
 .loader{position: absolute; bottom:0; left: 0; height: 5px; width: 100%; bottom: 0;}
-.loader .mover{background: #ff0; position: absolute; top:0; left: 0; height: 5px}
+.loader .mover{background: #ff0; position: absolute; top:0; left: 0; height: 5px;}
+
