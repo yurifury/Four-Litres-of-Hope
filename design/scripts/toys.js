@@ -74,6 +74,7 @@ $(function(){
 	function touchthis(){
 	
 		$('.js_mover').css('width', '0');
+		
 		$('.js_mover').animate({
 		  width: '100%'
 		}, 3000, function() {
@@ -92,6 +93,17 @@ $(function(){
 		});
 	}
 
-	touchthis();
+	// touchthis();
+	
+	
+	// Insert preloaded image after it finishes loading
+
+	$('<img />')
+	.attr('src', 'awesome/' + images[3])
+	.load(function(){
+		$('.js_fuckyeah').empty();
+		$('.js_fuckyeah').append($(this));
+	    // Your other custom code
+	});
 
 });
