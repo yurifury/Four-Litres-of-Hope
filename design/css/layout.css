@@ -21,8 +21,8 @@ a{text-decoration: none;}
 
 
 body{background: #000; border: 10px solid #000;}
-
 body.download{background: #c00;}
+body.eek{background: #ff0;}
 
 body, input, textarea{font-family: "Courier New", Courier, sans-serif; }
 
@@ -85,3 +85,10 @@ body, input, textarea{font-family: "Courier New", Courier, sans-serif; }
 .loader{position: absolute; bottom:0; left: 0; height: 5px; width: 100%; bottom: 0;}
 .loader .mover{background: #ff0; position: absolute; top:0; left: 0; height: 5px;}
 
+
+
+
+.halp{position: relative; width: 446px; margin: 0 auto; background: url(../images/blat_backer.png) no-repeat 0 0; padding: 140px 0 0 162px;}
+.halp .bro{width:248px; min-height: 600px; background: #000; padding: 20px;}
+
+.halp .bro h2{}

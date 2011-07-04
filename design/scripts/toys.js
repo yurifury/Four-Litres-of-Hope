@@ -93,11 +93,12 @@ $(function(){
 		});
 	}
 
-	// touchthis();
+	touchthis();
 	
 	
 	// Insert preloaded image after it finishes loading
 
+/*
 	$('<img />')
 	.attr('src', 'awesome/' + images[3])
 	.load(function(){
@@ -105,5 +106,6 @@ $(function(){
 		$('.js_fuckyeah').append($(this));
 	    // Your other custom code
 	});
+*/
 
 });
