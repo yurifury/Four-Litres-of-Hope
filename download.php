@@ -34,16 +34,31 @@ if (!$sql) {
 $row = mysql_fetch_array($sql);
 
 if ($row["downloads"] > 0) {
-	$dec_query = "UPDATE sekrit_codes SET downloads = downloads - 1 WHERE code = '" . $row["code"] . "';"
+	$dec_query = "UPDATE sekrit_codes SET downloads = downloads - 1 WHERE code = '" . $row["code"] . "';";
 	$dec_sql = mysql_query($dec_query);
 
 	if (!$dec_sql) {
 		error_log("Query $query failed: " . mysql_error());
 	}
 }
+else {
+	echo "no more downloads!";
+	die;
+}
+
+$sql = mysql_query($query);
+$row = mysql_fetch_array($sql);
 
 
-var_dump($row);
+//var_dump($row);
+
+echo $row["filename"];
+
+$s3 = new AmazonS3();
+
+$url = $s3->get_object_url('allcaps', $row["filename"], '+30 seconds');
+
+var_dump($url);
 
 //mysql_real_escape_string
 //decrement
