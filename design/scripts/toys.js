@@ -73,6 +73,21 @@ $(function(){
 	
 	function touchthis(){
 	
+		$('.js_ajax_loader').show();
+
+		$('<img />')
+		.attr('src', 'awesome/' + images[i])
+		.load(function(){
+
+			$('.js_fuckyeah').empty();
+			$('.js_fuckyeah').append($(this));
+
+		  $('.js_linky').attr('href', 'awesome/' + images[i] + '.gif');
+		  $('.js_linky').text('' + images[i]);	
+		  touchthis();			  		    
+		});
+	
+/*
 		$('.js_mover').css('width', '0');
 		
 		$('.js_mover').animate({
@@ -80,32 +95,21 @@ $(function(){
 		}, 3000, function() {
 			i++
 			if (images.length == i){i=0;}
-				
-		  $('.js_fuckyeah').empty();
 
+		  $('.js_fuckyeah').empty();
 		  $('.js_fuckyeah').append('<img src="awesome/' + images[i] + '">');
 
-		  $('.js_linky').attr('href', 'awesome/' + images[i] + '.gif');
-		  $('.js_linky').text('' + images[i]);
-		  
-		  touchthis();
-		  
 		});
+*/
+		
+		
 	}
 
-	touchthis();
+	// touchthis();
 	
 	
 	// Insert preloaded image after it finishes loading
 
-/*
-	$('<img />')
-	.attr('src', 'awesome/' + images[3])
-	.load(function(){
-		$('.js_fuckyeah').empty();
-		$('.js_fuckyeah').append($(this));
-	    // Your other custom code
-	});
-*/
+
 
 });
