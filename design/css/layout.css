@@ -14,6 +14,7 @@ body{z-index: 100; overflow: hidden;}
 .aboot{z-index: 550;}
 
 .mover{z-index: 888;}
+.ajax_loader{z-index: 999;}
 
 /* some general bits and pieces
 /* ------------------------------------------------------ */
@@ -92,9 +93,10 @@ a.allcapslogo:hover{opacity: 1;background: #000 url(../images/allcapslogo.png) n
 
 
 /* BOTTOM BRO */
-.loader{position: absolute; bottom:0; left: 0; height: 5px; width: 100%; bottom: 0;}
-.loader .mover{background: #ff0; position: absolute; top:0; left: 0; height: 1px;}
-.ajax_loader{background: #f0f url(../vendor/images.sw/animations/ajax/snake-ffffff-trans.gif) no-repeat center; width: 20px; height: 20px; position: absolute; bottom:0; right: 0; display: block;}
+.loader{position: absolute; bottom:0; left: 0; height: 3px; width: 100%; bottom: 0;}
+.loader .mover{background: #ff0; position: absolute; top:0; left: 0; height: 3px;}
+
+.ajax_loader{background: #fff url(../vendor/images.sw/animations/ajax/snake-000000-trans.gif) no-repeat center; width: 30px; height: 30px; position: absolute; bottom:10px; right: 0; display: block; border: 3px solid #000; border-radius: 3px 0 0 3px; border-right: none;}
 
 
 

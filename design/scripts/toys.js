@@ -75,37 +75,44 @@ $(function(){
 	
 		$('.js_ajax_loader').show();
 
+
+
 		$('<img />')
 		.attr('src', 'awesome/' + images[i])
 		.load(function(){
+		
+			$('.js_ajax_loader').hide();
+		
+			$('.js_mover').css('width', '0');
+				
+			$('.js_mover').animate({
+			  width: '100%'
+			}, 3000, function() {
+
+				i++
+				if (images.length == i){i=0;}
+	
+			  $('.js_fuckyeah').empty();
+			  $('.js_fuckyeah').append('<img src="awesome/' + images[i] + '">');
+			  touchthis();			  		    
+			});
+
+/*
 
 			$('.js_fuckyeah').empty();
 			$('.js_fuckyeah').append($(this));
 
 		  $('.js_linky').attr('href', 'awesome/' + images[i] + '.gif');
 		  $('.js_linky').text('' + images[i]);	
-		  touchthis();			  		    
+*/
+
 		});
 	
-/*
-		$('.js_mover').css('width', '0');
-		
-		$('.js_mover').animate({
-		  width: '100%'
-		}, 3000, function() {
-			i++
-			if (images.length == i){i=0;}
-
-		  $('.js_fuckyeah').empty();
-		  $('.js_fuckyeah').append('<img src="awesome/' + images[i] + '">');
-
-		});
-*/
-		
+				
 		
 	}
 
-	// touchthis();
+	touchthis();
 	
 	
 	// Insert preloaded image after it finishes loading
