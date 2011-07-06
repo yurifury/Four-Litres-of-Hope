@@ -139,9 +139,13 @@ $url = $s3->get_object_url('allcaps', $row["filename"], '+30 seconds');
 				You can download <a href="#" class="floh">FOUR LITRES OF HOPE</a> <strong><?php echo $downloads_left; ?></strong> more times using this code. Don't fuck it up.
 			</p>
 			
+			<?php } else { ?>
+				
+				<p class="download">The downloads on that code are all used up. Sorry dude. Hi five!</p>
+		
+			<?php } ?>
+
 		<?php } ?>
-
-
 
 
 	<input type="text" class="text">
