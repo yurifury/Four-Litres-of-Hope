@@ -2,7 +2,7 @@
 
 // we use these
 $downloads_left = 0;
-$downloads_status = '';
+$downloads_status = 'titseverywhere';
 
 ini_set('log_errors', true);
 
@@ -25,7 +25,7 @@ $download_code = mysql_real_escape_string($download_code);
 
 if (!preg_match('/^[A-Za-z0-9]{8}$/', $download_code)) {
 
-	$downloads_left = 'error';
+	$downloads_status = 'error';
 
 	die;
 }
@@ -123,20 +123,26 @@ $url = $s3->get_object_url('allcaps', $row["filename"], '+30 seconds');
 	<img src="awesome/plane.gif" alt="freshprince">
 </div>
 
-<form class="blat" action="download.html" method="get">
+<form class="blat" action="download.php" method="get">
 	<div>
 	
-		<p class="download">
+		<?php if ($downloads_status == 'error')	{ ?>
 		
-			<?php if (){ ?>
-			
-			<?php else if () {?>
-			
-			<?php else  {?>
-			
-			<?php } ?>
+			<p>You dun screwed something up. Try again.</p>
+			<p>Email <a href="mailto:will@bankai.fm">will@bankai.fm</a> if you think we screwed up.</p>
 		
-		</p>
+		<?php } else { ?>
+
+			<?php if ($downloads_left > 0 )	{ ?>
+	
+			<p class="download">
+				You can download <a href="#" class="floh">FOUR LITRES OF HOPE</a> <strong><?php echo $downloads_left; ?></strong> more times using this code. Don't fuck it up.
+			</p>
+			
+		<?php } ?>
+
+
+
 
 	<input type="text" class="text">
 	<input type="submit" class="submit" value="&nbsp;">

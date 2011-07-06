@@ -94,6 +94,10 @@ $(function(){
 	
 			  $('.js_fuckyeah').empty();
 			  $('.js_fuckyeah').append('<img src="awesome/' + images[i] + '">');
+			  
+			  $('.js_linky').attr('href', 'awesome/' + images[i]);
+			  $('.js_linky').text('' + images[i]);				  
+			  
 			  touchthis();			  		    
 			});
 
@@ -102,8 +106,7 @@ $(function(){
 			$('.js_fuckyeah').empty();
 			$('.js_fuckyeah').append($(this));
 
-		  $('.js_linky').attr('href', 'awesome/' + images[i] + '.gif');
-		  $('.js_linky').text('' + images[i]);	
+
 */
 
 		});
