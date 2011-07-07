@@ -135,10 +135,10 @@ $url = $s3->get_object_url('allcaps', $row["filename"], '+30 seconds');
 
 			<?php if ($downloads_left > 0 )	{ ?>
 	
-			<p class="download">
-				You can download <a href="#" class="floh">FOUR LITRES OF HOPE</a> <strong><?php echo $downloads_left; ?></strong> more times using this code. Don't fuck it up.
-			</p>
-			
+				<p class="download">
+					You can download <a href="#" class="floh"><?php echo $downloads_filename; ?></a> <strong><?php echo $downloads_left; ?></strong> more times using this code. Don't fuck it up.
+				</p>
+				
 			<?php } else { ?>
 				
 				<p class="download">The downloads on that code are all used up. Sorry dude. Hi five!</p>
