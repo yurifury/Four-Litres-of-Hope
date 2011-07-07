@@ -71,10 +71,10 @@
 	
 		<hr>
 		<h2>Q: I ran out of downloads!</h2>
-		<p><strong>A:</strong> You get limited downloads and downloads are handled by <a href="http://aws.amazon.com/s3/" target="_blank">Amazon S3 servers</a>, which pretty much never fuck up. So if you run out of downloads you done something wrong. Don't lose your mp3s bro.</p>
+		<p><strong>A:</strong> You get limited downloads and downloads are handled by <a href="http://aws.amazon.com/s3/" target="_blank">Amazon S3 servers</a>, which pretty much never fuck up. So if you run out of downloads you probably done something wrong. Don't lose your mp3s bro.</p>
 
 		<hr>
-		<h2>Q: This shit is amazing, can I give mad head (and/or interview, review, feature, etc) the people involved?</h2>
+		<h2>Q: This shit is amazing, can I make mad passionate love to (and/or interview, review, feature, etc) the people involved?</h2>
 		<p><strong>A:</strong> This EP was released by <a href="http://bankai.fm">Bankai</a> and <a href="http://www.facebook.com/abortifacient">Abortifacient</a>, via <a href="http://allcaps.fm">ALL CAPS Records</a>. Contact the dudes direct.</p>
 
 		<hr>
