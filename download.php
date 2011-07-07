@@ -1,71 +1,85 @@
 <?php
 
 // we use these
-$downloads_left = 0;
-$downloads_status = 'titseverywhere';
+$status = 'titseverywhere';
 
-ini_set('log_errors', true);
-
-// Include the SDK
+// Include the config and SDK
 require_once 'vendor/aws-sdk/sdk.class.php';
+require_once 'config.inc.php';
+require_once 'db.php';
 
-mysql_connect("127.0.0.1", "root", "root") or die(mysql_error());
+$download_code = get_download_code();
+$downloads_left = 0;
+$download_url = '';
 
-mysql_select_db("fourlitresofhope") or die(mysql_error());
+$code_pattern = '/^[A-Za-z0-9]{8}$/';
+if (preg_match($code_pattern, $download_code)) {
+	list ($downloads_left, $download_filename) = get_download_info($download_code);
 
-
-$url = $_SERVER['REQUEST_URI'];
-$url_parts = explode('/', $url);
-
-$download_code = end($url_parts);
-
-$download_code = mysql_real_escape_string($download_code);
-
-
-
-if (!preg_match('/^[A-Za-z0-9]{8}$/', $download_code)) {
-
-	$downloads_status = 'error';
-
-	die;
+	if ($downloads_left > 0) {
+		if (decrement($download_code)) {
+			$s3 = new AmazonS3();
+			$download_url = $s3->get_object_url('allcaps', $download_filename, '+30 seconds');
+			$status = "sweet";
+		}
+		else {
+			$status = "decrement_failed";
+		}
+	}
+	else {
+		$status = "no_downloads";
+	}
+}
+else {
+	$status = "wrong_code";
 }
 
-$query = "SELECT * FROM sekrit_codes INNER JOIN files ON sekrit_codes.file_id=files.id WHERE sekrit_codes.code='" . $download_code . " ';";
-//echo $query;
-$sql = mysql_query($query);
+function get_download_code() {
+	$url = $_SERVER['REQUEST_URI'];
+	$url_parts = explode('/', $url);
 
-if (!$sql) {
-	error_log("Query $query failed: " . mysql_error());
+	$download_code = end($url_parts);
+
+	$download_code = mysql_real_escape_string($download_code);
+
+	return $download_code;
 }
 
-$row = mysql_fetch_array($sql);
+function get_download_info($download_code) {
+	$query = "SELECT * FROM sekrit_codes INNER JOIN files ON sekrit_codes.file_id=files.id WHERE sekrit_codes.code='" . $download_code . " ';";
+	$sql = mysql_query($query);
 
-if ($row["downloads"] > 0) {
-	$dec_query = "UPDATE sekrit_codes SET downloads = downloads - 1 WHERE code = '" . $row["code"] . "';";
+	if (!$sql) {
+		error_log("Query $query failed: " . mysql_error());
+	}
+
+	$row = mysql_fetch_array($sql);
+	return array($row["downloads"], $row["filename"]);
+}
+
+function decrement($download_code) {
+	$dec_query = "UPDATE sekrit_codes SET downloads = downloads - 1 WHERE code = '" . $download_code . "';";
 	$dec_sql = mysql_query($dec_query);
 
 	if (!$dec_sql) {
 		error_log("Query $query failed: " . mysql_error());
+		return false;
 	}
+
+	return true;
 }
-else {
-
-	$downloads_left = 0;
-
-	die;
-}
-
-$sql = mysql_query($query);
-$row = mysql_fetch_array($sql);
+?>
 
 
-//var_dump($row);
 
-$s3 = new AmazonS3();
 
-$url = $s3->get_object_url('allcaps', $row["filename"], '+30 seconds');
 
-?><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
 "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="en">
 <head>
@@ -125,27 +139,24 @@ $url = $s3->get_object_url('allcaps', $row["filename"], '+30 seconds');
 
 <form class="blat" action="download.php" method="get">
 	<div>
-	
-		<?php if ($downloads_status == 'error')	{ ?>
+
+	<?php switch($status):
+					case 'wrong_code':
+					case 'decrement_failed': ?>
 		
 			<p>You dun screwed something up. Try again.</p>
 			<p>Email <a href="mailto:will@bankai.fm">will@bankai.fm</a> if you think we screwed up.</p>
 		
-		<?php } else { ?>
-
-			<?php if ($downloads_left > 0 )	{ ?>
-	
+		<?php case 'sweet': ?>
 			<p class="download">
-				You can download <a href="#" class="floh">FOUR LITRES OF HOPE</a> <strong><?php echo $downloads_left; ?></strong> more times using this code. Don't fuck it up.
+				You can download <a href="<?php echo $download_url ?>" class="floh">FOUR LITRES OF HOPE</a> <strong><?php echo $downloads_left; ?></strong> more times using this code. Don't fuck it up.
 			</p>
 			
-			<?php } else { ?>
+		<?php case 'no_downloads': ?>
 				
 				<p class="download">The downloads on that code are all used up. Sorry dude. Hi five!</p>
-		
-			<?php } ?>
 
-		<?php } ?>
+	<?php endswitch ?>
 
 
 	<input type="text" class="text">
